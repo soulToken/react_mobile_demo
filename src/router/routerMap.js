@@ -8,7 +8,6 @@ import App from '../App';
 
 class routerMap extends Component {
   render() {
-debugger;
     return (
         // <BrowserRouter>
         //     <Route path="/" component={App}/>

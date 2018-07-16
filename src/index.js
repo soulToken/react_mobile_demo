@@ -12,7 +12,7 @@ const store = createStore(count)
 function render(){ReactDOM.render(
     //配置路由
     <Provider store={store}>
-            <RouterMap store={store}  addGun={addGun} removeGun={removeGun}  />
+            <RouterMap addGun={addGun} removeGun={removeGun}  />
     </Provider>
  
   , document.getElementById('root'));
