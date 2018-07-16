@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import * as apis from './api/api';
-import { BrowserRouter as Router, Route, Link,Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Link,Switch } from "react-router-dom";
 import PropectedRouter from './router/PropectedRouter';
 import Login from './components/login'
 import Nofound from './components/errorPages/nofound'
