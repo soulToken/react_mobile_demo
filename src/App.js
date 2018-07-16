@@ -3,13 +3,15 @@ import logo from './logo.svg';
 import * as apis from './api/api';
 import { HashRouter as Router, Route, Link,Switch } from "react-router-dom";
 import PropectedRouter from './router/PropectedRouter';
+import {addGun} from './redux'
 import Login from './components/login'
 import Nofound from './components/errorPages/nofound'
 
 import './App.css';
-const Home = () => (
+const Home = (props) => (
   <div>
     <h2>Home</h2>
+    
   </div>
 );
 const remove=(props)=>{
@@ -64,18 +66,21 @@ class App extends Component {
 
   }
   get() {
-    this.state.apis.mock('account=""&token=""').then((res) => {
-      console.log(res)
-      if (res.ok) {
-        res.text().then((data) => {
-          console.log(data);
-        })
-      }
-    }).catch((res) => {
-      console.log(res.status);
-    });
+    this.props.store.dispatch(addGun())
+    console.log(this.props.store.getState())
+    // this.state.apis.mock('account=""&token=""').then((res) => {
+    //   console.log(res)
+    //   if (res.ok) {
+    //     res.text().then((data) => {
+    //       console.log(data);
+    //     })
+    //   }
+    // }).catch((res) => {
+    //   console.log(res.status);
+    // });
   }
   render() {
+    const store=this.props.store
     return (
       <div className="App">
         <header className="App-header">
@@ -103,7 +108,7 @@ class App extends Component {
             </ul>
             <hr />
             <Switch>
-                <Route exact path="/" component={Home} />
+                <Route exact path="/" store={store} component={Home} />
                 <Route path="/about" component={About} />
                 <Route path="/topics" component={Topics} />
                 <Route path="/login" component={Login}></Route>

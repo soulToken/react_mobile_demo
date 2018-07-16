@@ -8,12 +8,13 @@ import App from '../App';
 
 class routerMap extends Component {
   render() {
+    const store=this.props.store
     return (
         // <BrowserRouter>
         //     <Route path="/" component={App}/>
         // </BrowserRouter>
         <Router >
-         <Route path="/" component={App}/>
+            <App store={store}></App>
         </Router>
     );
   }
