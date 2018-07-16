@@ -61,6 +61,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = { apis };
+    debugger;
+
   }
   get() {
     this.state.apis.mock('account=""&token=""').then((res) => {
@@ -75,7 +77,6 @@ class App extends Component {
     });
   }
   render() {
-
     return (
       <div className="App">
         <header className="App-header">
