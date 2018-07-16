@@ -1,14 +1,28 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import * as apis from './api/api';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link,Switch } from "react-router-dom";
+import PropectedRouter from './router/PropectedRouter';
+import Login from './components/login'
+import Nofound from './components/errorPages/nofound'
+
 import './App.css';
 const Home = () => (
   <div>
     <h2>Home</h2>
   </div>
 );
-
+const remove=(props)=>{
+  localStorage.removeItem("login");
+}
+const My = () => (
+  <div>
+    <h2>我的页面</h2>
+    <button onClick={
+      remove
+    }><Link to="/">推出登陆</Link></button>
+  </div>
+);
 const About = () => (
   <div>
     <h2>About</h2>
@@ -83,11 +97,20 @@ class App extends Component {
               <li>
                 <Link to="/topics">Topics</Link>
               </li>
+              <li>
+                <Link to="/my">My</Link>
+              </li>
             </ul>
             <hr />
-            <Route exact path="/" component={Home} />
-            <Route path="/about" component={About} />
-            <Route path="/topics" component={Topics} />
+            <Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/about" component={About} />
+                <Route path="/topics" component={Topics} />
+                <Route path="/login" component={Login}></Route>
+                <PropectedRouter path="/my" component={My}></PropectedRouter>
+                <Route  component={Nofound}></Route>
+            </Switch>
+         
           </div>
         </Router>
       </div>
